@@ -3,15 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Clock from './components/Clock/Clock';
 
-const name = 'Ivan'
-const hello = <h1>Hello {name}</h1>
+// function tick() {
+//   const element = (
+//     <div>
+//       <h1>Hello, world!</h1>
+//       <h2>It is {new Date().toLocaleTimeString()}.</h2>
+//     </div>
+//   );
+//   ReactDOM.render(element, document.getElementById('root'));}
 
 ReactDOM.render(
-  /*<React.StrictMode>
+  <React.StrictMode>
     <App />
-  </React.StrictMode>,*/
-  hello,
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
