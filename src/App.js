@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 //Components
 import Clock from './components/Clock/Clock'
-import Card from './components/Card/Card';
+//import Card from './components/Card/Card';
+import Counter from './components/Counter/Counter'
 
 
 
@@ -70,7 +71,8 @@ export default class App extends Component {
     return (
       <div className="App">
         <header>
-        <Clock/>
+          <Clock/>
+          <Counter/>
         </header>
         <div>
           { divItems }
