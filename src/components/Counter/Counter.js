@@ -17,6 +17,8 @@ export default class Counter extends Component {
     }
     addCounter(){
         this.setState({
+            // Esto es una mala practica, se deben gestionar las modificaciones
+            // de estado en otra variable cuyo resultado sea referenciado al estado.
             counter: this.state.counter+=1  
         })
         if(this.state.counter % 8 === 0){
@@ -27,6 +29,10 @@ export default class Counter extends Component {
         }
     }
     render(){
-        return null
+        return(
+            <div className='Card-clock'>
+               <h1>Contador: {this.state.counter}</h1> 
+            </div>
+        )
     }
 }
