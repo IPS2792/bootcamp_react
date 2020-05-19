@@ -12,18 +12,22 @@ export default class Counter extends Component {
             () => this.addCounter(), 1000
         )
     }
+    componentDidUpdate(){
+        const { counter } = this.state
+        if(counter % 8 === 0){
+            console.log('Msg from componentDidUpdate')
+        }
+    }
     componentWillUnmount(){
         clearInterval(this.timerID)
     }
     addCounter(){
+        let { counter } = this.state
         this.setState({
-            // Esto es una mala practica, se deben gestionar las modificaciones
-            // de estado en otra variable cuyo resultado sea referenciado al estado.
-            counter: this.state.counter+=1  
+            // Usar "counter: this.state.counter+=1" es una mala practica, se deben gestionar las modificaciones
+            // de estado en otra variable cuyo resultado sea referenciado al estado como se muestra a continuacion:
+            counter: counter+=1  
         })
-        if(this.state.counter % 8 === 0){
-            console.log(this.state.counter)
-        }
         if(this.state.counter === 20){
             this.componentWillUnmount()
         }

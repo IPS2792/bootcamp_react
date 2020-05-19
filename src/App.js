@@ -6,6 +6,8 @@ import './App.css';
 import Clock from './components/Clock/Clock'
 //import Card from './components/Card/Card';
 import Counter from './components/Counter/Counter'
+import Button from './components/Button/index'
+import Notes from './components/Notes/index'
 
 
 
@@ -72,7 +74,9 @@ export default class App extends Component {
       <div className="App">
         <header>
           <Clock/>
-          <Counter/>
+          <Counter step={2}/>
+          <Button />
+          <Notes />
         </header>
         <div>
           { divItems }
