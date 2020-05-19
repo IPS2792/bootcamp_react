@@ -7,7 +7,10 @@ import Clock from './components/Clock/Clock'
 //import Card from './components/Card/Card';
 import Counter from './components/Counter/Counter'
 import Button from './components/Button/index'
-import Notes from './components/Notes/index'
+//import Notes from './components/Notes/index'
+import Form from './components/Form';
+import CurrencyConverter from './components/CurrencyConverter/index'
+import ConditonalRendering from './components/ConditionalRendering/index'
 
 
 
@@ -74,9 +77,11 @@ export default class App extends Component {
       <div className="App">
         <header>
           <Clock/>
-          <Counter step={2}/>
           <Button />
-          <Notes />
+          <Counter step={2}/>
+          <Form />
+          <CurrencyConverter />
+          <ConditonalRendering />
         </header>
         <div>
           { divItems }

@@ -1,0 +1,13 @@
+.form-container{
+    display: flex;
+    justify-content: space-around;
+    border: 3px solid blue;
+}
+
+.square-form{
+    display: flex;
+    justify-content: space-around;
+    border: 3px solid red;
+    background-color: crimson;
+    color: crimson;
+  }
