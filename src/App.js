@@ -1,92 +1,32 @@
-import React, { Component } from 'react';
-//import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-//Components
-import Clock from './components/Clock/Clock'
-//import Card from './components/Card/Card';
-import Counter from './components/Counter/Counter'
-import Button from './components/Button/index'
-//import Notes from './components/Notes/index'
-import Form from './components/Form';
-import CurrencyConverter from './components/CurrencyConverter/index'
-import ConditonalRendering from './components/ConditionalRendering/index'
+// External Packages
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+// Pages
+import Home from "./pages/Home";
+import Notes from "./pages/Notes";
+import Menu from "./pages/Menu";
 
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-//export default App;
+// CSS
+import "./App.css";
 
 export default class App extends Component {
-  render(){
-    //Aqui se puede ejecutar codigo de JS
-    const data = [
-      {
-        category: 'Elemental',
-        title: 'How Sunlight, the Immune System, and Covid-19 Interact',
-        description: 'For thousands of years, humans have recognized that the sun plays a role in the emergence and transmission of viruses',
-        author: 'Markham Heid',
-        publicationDate: 'May 13',
-        readTime: '10 min read'
-      },
-      {
-        category: 'Eudaimonia and Co',
-        title: 'How Freedom Became Free-dumb in America',
-        description: 'Why the World is Horrified by the American Idiot',
-        author: 'umair haque',
-        publicationDate: 'May 5',
-        readTime: '9 min read'
-      }
-    ]
-    const divItems = data.map((element) => 
-      <div className='Card'>
-        <div className='Card-content'>
-          <p><strong>{element.title}</strong></p>
-          <p>{element.description}</p>
-          <p><strong>{element.author} in {element.category}</strong></p>
-          <p>{element.publicationDate} * {element.readTime}</p>
-        </div>
-        <div className='Card-image'>
-          <figure>
-              <img alt='card-p' src={'https://picsum.photos/200/300'} />
-          </figure>
-        </div>
-      </div>
-    )
+  render() {
     return (
-      <div className="App">
-        <header>
-          <Clock/>
-          <Button />
-          <Counter step={2}/>
-          <Form />
-          <CurrencyConverter />
-          <ConditonalRendering />
-        </header>
-        <div>
-          { divItems }
+      <Router>
+        <div className="App">
+          <Menu />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/notes">
+              <Notes />
+            </Route>
+          </Switch>
         </div>
-      </div>
+      </Router>
     );
   }
 }
