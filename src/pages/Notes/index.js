@@ -5,7 +5,7 @@ import NewNote from './components/NewNote'
 
 // components
 import Header from '../../components/Header'
-import Note from './components/NewNote'
+import Note from '../../components/Note'
 
 // CSS
 import './Notes.css'
