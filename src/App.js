@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Notes from "./pages/Notes";
 import Menu from "./pages/Menu";
+import Currency from "./pages/Currency"
 
 // CSS
 import "./App.css";
@@ -23,6 +24,9 @@ export default class App extends Component {
             </Route>
             <Route exact path="/notes">
               <Notes />
+            </Route>
+            <Route exact path="/currency">
+              <Currency />
             </Route>
           </Switch>
         </div>
