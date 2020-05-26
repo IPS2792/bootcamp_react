@@ -11,45 +11,42 @@ import Note from '../../components/Note'
 import './Notes.css'
 
 export default class Notes extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      notes: []
-    }
-    this._renderNotes = this._renderNotes.bind(this)
-    this.handleNewNote = this.handleNewNote.bind(this)
+      notes: [],
+    };
+    this._renderNotes = this._renderNotes.bind(this);
+    this.handlerNewNote = this.handlerNewNote.bind(this)
   }
-
   componentDidMount() {
     fetch("https://reactsessions-ac545.firebaseio.com/.json")
     .then(response => response.json())
     .then(({notes}) => {
-      let notesArray = []
-      for (let key in notes){
-        notesArray.push({
-          key,
-          title: notes[key]['title'],
-          content: notes[key]['content']
+        var notesArray = []
+        for (let key in notes) {
+          notesArray.push({
+            key,
+            title: notes[key]['title'],
+            content: notes[key]['content']
+          })
+        }
+        this.setState({
+          notes: notesArray
         })
-      }
-      this.setState({
-        notes: notesArray
-      })
     })
   }
-
-  _renderNotes () {
-    const { notes } = this.state
+  _renderNotes() {
+    const { notes } = this.state;
     return notes.map(({ key, title, content }) => {
-      return <Note key={key} title={title} content={content} />
-    })
+      return <Note key={key} title={title} content={content} />;
+    });
   }
-
-  handleNewNote(note){
+  handlerNewNote(note) {
     fetch(
       "https://reactsessions-ac545.firebaseio.com/notes.json",
       {
-        method:'POST',
+        method: 'POST',
         body: JSON.stringify(note),
         headers: {
           'Content-type': 'application/json'
@@ -65,24 +62,30 @@ export default class Notes extends Component {
       })
     })
   }
-
-  render () {
+  render() {
     return (
-      <div className='Container'>
-        <div>
-          <Header
-            title={'Blog de Notas'}
-            description={'Aqui aprenderemos a manejar el estado interno y subir el estado hijo al padre'}
-          />
-          <div className='Notes-container'>
-            <ul>{this._renderNotes()}</ul>
-            <NewNote
-            handleNewNote = {this.handleNewNote}
-            />
-          </div>
-        </div>
+      <div className="Container">
+        {  
+          this.props.isUserLogedIn ? (
+            <div>
+              <Header
+                title={"Blog de notas"}
+                description={
+                  "Aqui aprenderemos a manejar el estado interno y subir el estado del hijo al padre"
+                }
+              />
+              <div className="Notes-container">
+                <ul>{this._renderNotes()}</ul>
+                <NewNote 
+                  handlerNewNote={this.handlerNewNote}
+                />
+              </div>
+            </div>
+          ) : (
+            <h1>Loggeate perro</h1>
+          )  
+        }
       </div>
-
-    )
+    );
   }
 }

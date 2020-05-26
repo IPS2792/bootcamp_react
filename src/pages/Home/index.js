@@ -1,22 +1,27 @@
-import React from 'react';
+import React from "react";
 
 // Components
-import Header from '../../components/Header'
+import Header from "../../components/Header";
 
-// CSS
-import './Home.css'
+// Css
+import "./Home.css";
 
- function Home() {
+function Home(props) {
   return (
-    <div className='Container'>
+    <div className="Container">
       <div>
         <Header
-          title = {'Kodemia modulo 3'}
-          description = {'Aqui aprenderemos React'}
+          title={"Kodemia modulo 3"}
+          description={"Aqui aprenderemos React JS"}
         />
+        <p>
+          {!props.isUserLogedIn
+            ? "No puedes ver el contenido de esta página, inicia sesión"
+            : null}
+        </p>
       </div>
     </div>
-  )
+  );
 }
 
 export default Home
